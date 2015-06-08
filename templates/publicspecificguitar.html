@@ -1,0 +1,56 @@
+<html>
+<head>
+	<link rel=stylesheet type=text/css href="{{ url_for('static', filename='styles.css') }}">
+	</head>
+
+<body>
+
+<div class = 'pane'>
+		<div class = 'header'>
+
+<h1>{{guitar.name}}</h1>
+</div>
+
+
+<div class = 'flash'>
+
+<!--MESSAGE FLASHING EXAMPLE-->
+
+{% with messages = get_flashed_messages() %}
+{% if messages %}
+
+<ul>
+{% for message in messages %}
+  <li><strong>{{message}}</strong></li>
+  {% endfor %}
+</ul>
+{% endif %}
+{% endwith %}
+</div>
+
+
+<h2><a href='{{url_for('newGuitar', guitar_id = guitar.id) }}'>Add Guitar Item</a> </h2>
+<h2><a href='{{url_for('guitarHome') }}'>Return to Guitar Categories</a> </h2>
+
+{% for i in items %}
+
+    <div class = 'nameAndPrice'>
+		<span class = 'name'><p>{{i.name}}</p></span>
+
+		<span class = 'price'>
+<p> {{i.price}} </p>
+</span>
+</div>
+
+	<div class = 'description'>
+		<p>{{i.description}}</p>
+	</div>
+
+
+
+{% endfor %}
+</div>
+</div>
+</body>
+
+</html>
